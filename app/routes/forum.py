@@ -20,6 +20,7 @@ def blogList():
     # This retrieves all of the 'blogs' that are stored in MongoDB and places them in a
     # mongoengine object as a list of dictionaries name 'blogs'.
     blogs = Blog.objects()
+    print(blogs)
     # This renders (shows to the user) the blogs.html template. it also sends the blogs object 
     # to the template as a variable named blogs.  The template uses a for loop to display
     # each blog.
@@ -189,7 +190,7 @@ def commentEdit(commentID):
     if current_user != editComment.author:
         flash("You can't edit a comment you didn't write.")
         return redirect(url_for('blog',blogID=editComment.blog.id))
-    blog = Bog.objects.get(id=editComment.blog.id)
+    blog = Blog.objects.get(id=editComment.blog.id)
     form = CommentForm()
     if form.validate_on_submit():
         editComment.update(

@@ -4,10 +4,10 @@
 
 <div class="row">
     <div class="col-4">
-        <h1 class="display-1">All Blogs</h1>
+        <h1 class="display-1">All Recipes</h1>
     </div>
     <div class="col">
-        <a href="/blog/new" class="btn btn-primary btn-sm mt-5" role="button">New Blog</a>
+        <a href="/recipe/new" class="btn btn-primary btn-sm mt-5" role="button">New Recipe</a>
     </div>
 </div>
 
@@ -18,29 +18,27 @@
                 {% if loop.index == 1 %}
                 <h3 class="display-5">Date</h3>
                 {% endif %}
-                {{blog.create_date}}
 
-                <a href="/blog/{{blog.id}}">
-                    {{blog.create_date}}
-                    {{moment(blog.create_date).calendar()}}
+                <a href="/recipe/{{recipe.id}}">
+                    {{moment(recipe.create_date).calendar()}}
                 </a>
             </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
                 <h3 class="display-5">User</h3>
                 {% endif %}
-                {{blog.author.fname}} {{blog.author.lname}}
+                {{recipe.author.fname}} {{recipe.author.lname}}
             </div>
             <div class="col">
                 {% if loop.index == 1 %}
                     <h3 class="display-5">Subject</h3>
                 {% endif %}
-                {{blog.subject}}
+                {{recipe.subject}}
             </div>
         </div>
     {% endfor %}
 {% else %}
-    <h1>No Blogs</h1>
+    <h1>No Recipes</h1>
 {% endif %}
 
 {% endblock %}

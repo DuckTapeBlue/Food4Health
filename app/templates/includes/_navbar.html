@@ -1,20 +1,61 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white">
-  <div class="container-fluid mb-3">
-    <a class="navbar-brand .navbar-text display-1 font-weight-bold" href="/">Home</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 display-7" style="margin: 0% 37%;"> 
-        <li class="nav-item">
-          <a class="nav-link" href="/blogs">Blogs</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/">Another Link</a>
-        </li>
-        <li>
-      </li> 
+<body>
+    
+  <div class="hero">
+      
+    <nav>
+      
+      <h2 class="name">Food<span>4Health</span></h2>
+      <ul>
+        
+
+        <li><a href="/AboutUs">About</a></li>
+        <li><a href="/blogs">Blogs</a></li>
+        <li><a href="/recipe">Recipes</a></li>
+        <li><a href="Bootstrap-files/MainB.html">Q & A</a></li>
+      
       </ul>
+      {% if current_user.is_anonymous %}
+      <a href="{{ url_for('login') }}" class="button">login</a>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="/myprofile">
+          <div class="container">
+          {{ current_user.gname }} 
+        </div>
+        </a>
+      <a class="button" href="{{ url_for('logout') }}">Logout</a>
+      {% endif %}
+    </nav>
+    
+
+    <div class="content">
+      <h4>Place Holder</h4>
+      <h1>Place <span>Holder</span></h1>
+      <h3>THIS IS MORE PLACE HOLDER</h3>
+    </div>
+    <div class="section" id="arrow"></div>
+  </div>
+  
+  
+</body>
+
+
+<!--
+      <div class="hero">
+      <nav>
+        <h2 class="name">Cap<span>stone</span></h2>
+        <ul>
+          
+ 
+          <li><a href="Research/ResearchName.html">Research</a></li>
+          <li><a href="html-files/MainH.html">HTML</a></li>
+          <li><a href="CSS-files/MainC.html">CSS</a></li>
+          <li><a href="Bootstrap-files/MainB.html">BootStrap</a></li>
+        
+        </ul>
+        <a href="#" class="btn">Cheeseburger</a>
+      </nav>
+    </div>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         {% if current_user.is_anonymous %}
           <li class="nav-item">
@@ -37,3 +78,4 @@
     </div>
   </div>
 </nav>  
+-->

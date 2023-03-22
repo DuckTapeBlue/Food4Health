@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'baseMain.html' %}
 
 {% block body %}
 
@@ -17,6 +17,13 @@
             {{ form.lname.label }}<br>
             {{ form.lname() }}<br>
             {% for error in form.lname.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.role.label }}<br>
+            {{ form.role() }}<br>
+            {% for error in form.role.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>

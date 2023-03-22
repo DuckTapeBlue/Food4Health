@@ -31,6 +31,7 @@ class User(UserMixin, Document):
     email = EmailField()
     image = FileField()
     prononuns = StringField()
+    role = StringField()
 
     meta = {
         'ordering': ['lname','fname']
@@ -58,6 +59,20 @@ class Comment(Document):
     content = StringField()
     create_date = DateTimeField(default=dt.datetime.utcnow)
     modify_date = DateTimeField()
+
+    meta = {
+        'ordering': ['-createdate']
+    }
+
+class Recipe(Document):
+    name = StringField()
+    genre = StringField()
+    author = ReferenceField('User', reverse_delete_rule=CASCADE)
+    image = FileField()
+    summary = StringField()
+    ingredients = StringField()
+    recipe = StringField()
+    tags = StringField()
 
     meta = {
         'ordering': ['-createdate']

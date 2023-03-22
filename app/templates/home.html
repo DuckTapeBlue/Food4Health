@@ -1,0 +1,70 @@
+<!-- This is a blank template.  You can copy this to make a new template page. -->
+
+{% extends 'base.html' %}
+
+
+<!-- 2nd pg Text-->
+{% block body %}
+<section class="about">
+    <div class="main">
+      <img src="../static/IMG2.jpg">
+      <div class="about-text">
+        <h2>Capstone</h2>
+        
+        <h5>Gluten-Free <span>cost & availibility</span></h5>
+        <p>
+        I have been gluten-free since the begining of Quarantine
+        So, Naturally I chose gluten-free availibility as my capstone project
+        <br>
+        <br>
+        </p>
+        
+        
+          <div class="lnk">
+            <a href="https://www.mayoclinichealthsystem.org/hometown-health/speaking-of-health/gluten-free-what-does-that-mean" class="button">Gluten-Free?</a>
+        </div>
+      
+      </div>
+    </div>
+  </section>
+  
+  <!-- 3rd pg Text-->
+  <div class="web">
+    <p>On this website you can find links to all my past work done in class through the links at the top. <br>
+      This page however, is not my final capstone project website. <br>
+      You can find a link to that below.</p>
+      <a href="MISC/Capstone_placeholder.html" class="button-two">Capstone Project</a>
+  </div>
+
+  <div class="explain">
+    <div class="yes">
+      <img src="static/blog_img3.jpg" alt="">
+   
+    <h2>
+      What is the Capstone Project?
+    </h2>
+    <p>
+      A capstone project focuses on a plobem in the world. It highlights the root causes, affects, and possible solutions to the problem. 
+      The final product will be a solution created entirely by the individual or group through coding.
+    </p>
+  </div>
+
+  </div>
+    <!-- footing-->
+  <footer>
+    <p>
+      All Backround Images from  <a href="https://www.vecteezy.com/">vecteezy.com</a>
+    </p>
+ 
+  </footer>
+  <script>
+    $(window).bind('scroll', function() {
+     if ($(window).scrollTop() > 100) {
+         $('arrow').hide();
+     }
+     else {
+         $('arrow').show();
+     }
+});
+  </script>
+{% endblock %}
