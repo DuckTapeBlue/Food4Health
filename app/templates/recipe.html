@@ -3,7 +3,7 @@
 {% block body %}
 
 {% if recipe %}
-    {{moment(recipe.create_date).calendar()}} by {{recipe.author.fname}} {{recipe.author.lname}} 
+    {{moment(recipe.create_date).calendar()}} by {{recipe.recauthor}}
     {% if recipe.modifydate %}
         modified {{moment(recipe.modifydate).calendar()}}
     {% endif %}
@@ -17,13 +17,19 @@
         </a>
     {% endif %}
 
-    <h1 class="display-5">{{recipe.subject}}</h1>
+    <h1 class="display-5">{{recipe.name}}</h1>
     <p class="fs-3 text-break">
         {% if recipe.author.image %}
             <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(recipe.author.image.read())}}">
         {% endif %}
-            {{recipe.content}} <br>
-            {{recipe.tag}}
+            {{recipe.genre}}<br>
+            {{recipe.recauthor}}<br>
+            {{recipe.recimage}}<br>
+            {{recipe.summary}}<br>
+            {{recipe.ingredients}}<br>
+            {{recipe.recrecipe}}<br>
+            {{recipe.tags}}<br>
+
 
     </p>
     <a href="/comment/new/{{recipe.id}}" class="btn btn-primary btn-sm" role="button">New Comment</a>

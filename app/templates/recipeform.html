@@ -15,25 +15,25 @@
             </p>
             <p>
                 {{ form.genre.label }} <br>
-                {{ form.genre(size=64) }}
+                {{ form.genre() }}
                 <!--List the errors for this field-->
                 {% for error in form.genre.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
             <p>
-                {{ form.author.label }} <br>
-                {{ form.author(size=64) }}
+                {{ form.recauthor.label }} <br>
+                {{ form.recauthor(size=64) }}
                 <!--List the errors for this field-->
-                {% for error in form.author.errors %}
+                {% for error in form.recauthor.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
-            <p>
-                {{ form.subject.label }} <br>
-                {{ form.subject(size=64) }}
-                <!--List the errors for this field-->--------IMAGE HERE
-                {% for error in form.subject.errors %}
+             <p>
+                {{"data:recimage;base64,{{base64encode(current_user.image.read())}}"}} <br>
+                {{ form.recimage(size=64) }}
+                <!--List the errors for this field-->
+                {% for error in form.recimage.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
@@ -50,6 +50,14 @@
                 {{ form.ingredients(size=64) }}
                 <!--List the errors for this field-->
                 {% for error in form.ingredients.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+             <p>
+                {{ form.recrecipe.label }} <br>
+                {{ form.recrecipe(size=64) }}
+                <!--List the errors for this field-->
+                {% for error in form.recrecipe.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>

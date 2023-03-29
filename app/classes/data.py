@@ -49,10 +49,27 @@ class Blog(Document):
         'ordering': ['-createdate']
     }
 
+class Recipe(Document):
+    name = StringField()
+    genre = StringField()
+    recauthor = StringField()
+    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+    recimage = FileField()
+    summary = StringField()
+    ingredients = StringField()
+    recrecipe = StringField()
+    tags = StringField()
+    create_date = DateTimeField(default=dt.datetime.utcnow)
+    modify_date = DateTimeField()
+    meta = {
+        'ordering': ['-createdate']
+    }
+
 class Comment(Document):
     # Line 63 is a way to access all the information in Course and Teacher w/o storing it in this class
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
     blog = ReferenceField('Blog',reverse_delete_rule=CASCADE)
+    recipe = ReferenceField('Recipe',reverse_delete_rule=CASCADE)
     # This could be used to allow comments on comments
     comment = ReferenceField('Comment',reverse_delete_rule=CASCADE)
     # Line 68 is where you store all the info you need but won't find in the Course and Teacher Object
@@ -64,16 +81,3 @@ class Comment(Document):
         'ordering': ['-createdate']
     }
 
-class Recipe(Document):
-    name = StringField()
-    genre = StringField()
-    author = ReferenceField('User', reverse_delete_rule=CASCADE)
-    image = FileField()
-    summary = StringField()
-    ingredients = StringField()
-    recipe = StringField()
-    tags = StringField()
-
-    meta = {
-        'ordering': ['-createdate']
-    }

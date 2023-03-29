@@ -29,11 +29,11 @@ class CommentForm(FlaskForm):
 class RecipeForm(FlaskForm):
     name = StringField('Recipe Name', validators=[DataRequired()])
     genre = SelectField('Recipe Genre',choices=[("Breakfast","Breakfast"),("Brunch","Brunch"),("Lunch","Lunch"),("Dinner","Dinner"),("Dessert","Dessert")])
-    author = StringField('Author', validators=[DataRequired()])
-    image = FileField()
+    recauthor = StringField('Author', validators=[DataRequired()])
+    recimage = FileField('Image', validators=[DataRequired()])
     summary = StringField('Recipe summary', validators=[DataRequired()])
     ingredients = StringField('Ingredients', validators=[DataRequired()])
-    recipe = StringField('Recipe', validators=[DataRequired()])
+    recrecipe = StringField('Recipe', validators=[DataRequired()])
     tags = StringField('Tags', validators=[DataRequired()])
     submit = SubmitField('Post')
    
