@@ -30,8 +30,8 @@
                 {% endfor %}
             </p>
              <p>
-                {{"data:recimage;base64,{{base64encode(current_user.image.read())}}"}} <br>
-                {{ form.recimage(size=64) }}
+                 <br>
+                {{ form.recimage() }}
                 <!--List the errors for this field-->
                 {% for error in form.recimage.errors %}
                     <span style="color: red;">[{{ error }}]</span>
