@@ -32,7 +32,6 @@ class User(UserMixin, Document):
     image = FileField()
     prononuns = StringField()
     role = StringField()
-
     meta = {
         'ordering': ['lname','fname']
     }

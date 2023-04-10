@@ -17,9 +17,8 @@ class ProfileForm(FlaskForm):
    
 
 class BlogForm(FlaskForm):
-    subject = StringField('Subject', validators=[DataRequired()])
-    content = TextAreaField('Blog', validators=[DataRequired()])
-    tag = StringField('Tag', validators=[DataRequired()])
+    subject = StringField('Topic', validators=[DataRequired()])
+    content = TextAreaField('Question', validators=[DataRequired()])
     submit = SubmitField('Blog')
 
 class CommentForm(FlaskForm):

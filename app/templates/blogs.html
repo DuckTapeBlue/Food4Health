@@ -4,10 +4,10 @@
 
 <div class="row">
     <div class="col-4">
-        <h1 class="display-1">All Blogs</h1>
+        <h1 class="display-1">All QUESTIONS</h1>
     </div>
     <div class="col">
-        <a href="/blog/new" class="btn btn-primary btn-sm mt-5" role="button">New Blog</a>
+        <a href="/blog/new" class="btn btn-primary btn-sm mt-5" role="button">New Question</a>
     </div>
 </div>
 
@@ -36,6 +36,12 @@
                     <h3 class="display-5">Subject</h3>
                 {% endif %}
                 {{blog.subject}}
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Question</h3>
+                {% endif %}
+                {{blog.content}}
             </div>
         </div>
     {% endfor %}
