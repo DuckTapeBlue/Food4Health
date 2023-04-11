@@ -56,12 +56,13 @@ class Recipe(Document):
     recimage = FileField()
     summary = StringField()
     ingredients = StringField()
+    time = StringField()
     recrecipe = StringField()
     tags = StringField()
     create_date = DateTimeField(default=dt.datetime.utcnow)
     modify_date = DateTimeField()
     meta = {
-        'ordering': ['-createdate']
+        'ordering': ['createdate']
     }
 
 class Comment(Document):

@@ -32,6 +32,7 @@ class RecipeForm(FlaskForm):
     recimage = FileField('Image', validators=[DataRequired()])
     summary = StringField('Recipe summary', validators=[DataRequired()])
     ingredients = StringField('Ingredients', validators=[DataRequired()])
+    time = StringField('Time (hrs)', validators=[DataRequired()])
     recrecipe = StringField('Recipe', validators=[DataRequired()])
     tags = StringField('Tags', validators=[DataRequired()])
     submit = SubmitField('Post')

@@ -28,15 +28,13 @@
             <br>
             {{recipe.recauthor}}<br>
             {% if recipe.recimage %}
-            <img width="120" src="data:image;base64,{{base64encode(form.recimage.read())}}">
+            <img width="1000" src="data:image;base64,{{base64encode(recipe.recimage.read())}}">
             {% endif %}
             {{recipe.summary}}<br>
             {{recipe.ingredients}}<br>
             {{recipe.recrecipe}}<br>
             {{recipe.tags}}<br>
-            {{recipe.recimage}}
-            <br>
-            
+            {{recipe.name}}
 
 
     </p>

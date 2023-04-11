@@ -36,16 +36,19 @@ def recipeNew():
             name = form.name.data,
             genre = form.name.data,
             recauthor = form.recauthor.data,
-            recimage = form.recimage.data,
             summary = form.summary.data,
             ingredients = form.ingredients.data,
+            time = form.time.data,
             recrecipe = form.recrecipe.data,
             tags = form.tags.data,
             
             modify_date = dt.datetime.utcnow
         )
-
         newRecipe.save()
+        if form.recimage.data:
+            newRecipe.recimage.put(form.recimage.data, content_type = 'image/jpeg')
+            # This saves all the updates
+            newRecipe.save()
         return redirect(url_for('recipe',recipeID=newRecipe.id))
     return render_template('recipeform.html',form=form)
 
@@ -69,6 +72,7 @@ def recipeEdit(recipeID):
             recimage = form.recimage.data,
             summary = form.summary.data,
             ingredients = form.ingredients.data,
+            time = form.time.data,
             recrecipe = form.recrecipe.data,
             tags = form.tags.data,
             modify_date = dt.datetime.utcnow

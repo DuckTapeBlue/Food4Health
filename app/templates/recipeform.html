@@ -3,7 +3,7 @@
 {% block body %}
         <h1></h1>
 
-        <form method=post>
+        <form method=post  enctype="multipart/form-data">
             {{ form.hidden_tag() }}
             <p>
                 {{ form.name.label }} <br>
@@ -15,7 +15,7 @@
             </p>
             <p>
                 {{ form.genre.label }} <br>
-                {{ form.genre() }}
+                {{ form.genre()}}
                 <!--List the errors for this field-->
                 {% for error in form.genre.errors %}
                     <span style="color: red;">[{{ error }}]</span>
@@ -50,6 +50,14 @@
                 {{ form.ingredients(size=64) }}
                 <!--List the errors for this field-->
                 {% for error in form.ingredients.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.time.label }} <br>
+                {{ form.time(size=64) }}
+                <!--List the errors for this field-->
+                {% for error in form.time.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
