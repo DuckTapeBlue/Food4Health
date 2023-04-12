@@ -80,14 +80,13 @@ def recipeEdit(recipeID):
         return redirect(url_for('recipe',recipeID=recipeID))
 
     form = RecipeForm()
-
+      
     if form.validate_on_submit():
         editrecipe.update(
             name = form.name.data,
             genre = form.genre.data,
             recauthor = form.recauthor.data,
             author = current_user.id,
-            recimage = form.recimage.data,
             summary = form.summary.data,
             ingredients = form.ingredients.data,
             time = form.time.data,
@@ -95,6 +94,12 @@ def recipeEdit(recipeID):
             tags = form.tags.data,
             modify_date = dt.datetime.utcnow
         )
+        if form.recimage.data:
+            if editrecipe.recimage:
+                editrecipe.recimage.delete()
+            editrecipe.recimage.put(form.recimage.data, content_type = 'image/jpeg')
+            # This saves all the updates
+            editrecipe.save()
     
         return redirect(url_for('recipe',recipeID=recipeID))
 
@@ -102,14 +107,14 @@ def recipeEdit(recipeID):
     form.name.data = editrecipe.name
     form.genre.data = editrecipe.genre
     form.recauthor.data = editrecipe.recauthor
-    form.recimage.data = editrecipe.recimage
     form.summary.data = editrecipe.summary
     form.ingredients.data = editrecipe.ingredients
     form.time.data = editrecipe.time
     form.recrecipe.data = editrecipe.recrecipe
     form.tags.data = editrecipe.tags
+        #FIXME:#
 
-    return render_template('recipeform.html',form=form)
+    return render_template('recipeform.html',form=form, recipe=recipe)
 
 
 @app.route('/comment/new/<recipeID>', methods=['GET', 'POST'])
