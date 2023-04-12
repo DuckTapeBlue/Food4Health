@@ -1,13 +1,14 @@
 {% extends 'baseMain.html' %}
 
 {% block body %}
-
+<!--FIXME:-->
 {% if recipe %}
     {{moment(recipe.create_date).calendar()}} by {{recipe.recauthor}}
     {% if recipe.modifydate %}
         modified {{moment(recipe.modifydate).calendar()}}
     {% endif %}
     <br>
+    
     {% if recipe.author == current_user %}
         <a data-toggle="tooltip" data-placement="top" title="Delete Recipe" href="/recipe/delete/{{recipe.id}}">
             <img width="40" class="bottom-image" src="/static/delete.png">
@@ -15,14 +16,14 @@
         <a data-toggle="tooltip" data-placement="top" title="Edit Recipe" href="/recipe/edit/{{recipe.id}}">
             <img width="40" class="bottom-image" src="/static/edit.png">
         </a>
+
+        <h1> TESTING TESTING TESTING</h1>
     {% endif %}
 
     <h1 class="display-5 text-dark">{{recipe.name}}</h1>
     <p class="fs-3 text-break">
-        {% if recipe.author.image %}
-            <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(recipe.user.image.read())}}">
-        {% endif %}
             <div class="contaier border borderwidth-4">
+           
             {{recipe.genre}}
             </div>
             <br>

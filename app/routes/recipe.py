@@ -34,14 +34,15 @@ def recipeNew():
     if form.validate_on_submit():
         newRecipe = Recipe(
             name = form.name.data,
-            genre = form.name.data,
+            genre = form.genre.data,
             recauthor = form.recauthor.data,
+            author = current_user.id,
             summary = form.summary.data,
             ingredients = form.ingredients.data,
             time = form.time.data,
             recrecipe = form.recrecipe.data,
             tags = form.tags.data,
-            
+            create_date = dt.datetime.utcnow,
             modify_date = dt.datetime.utcnow
         )
         newRecipe.save()
@@ -53,11 +54,27 @@ def recipeNew():
     return render_template('recipeform.html',form=form)
 
 
+@app.route('/recipe/delete/<recipeID>')
+
+@login_required
+def recipeDelete(recipeID):
+   
+    deleteRecipe = Recipe.objects.get(id=recipeID)
+    if current_user == deleteRecipe.author:
+    
+        deleteRecipe.delete()
+    
+        flash('The Recipe was deleted.')
+    else:
+        flash("You can't delete a recipe you don't own.")
+
+    recipes = Recipe.objects()  
+    return render_template('recipe.html',recipes=recipes)
 
 @app.route('/recipe/edit/<recipeID>', methods=['GET', 'POST'])
 @login_required
 def recipeEdit(recipeID):
-    editrecipe = recipe.objects.get(id=recipeID)
+    editrecipe = Recipe.objects.get(id=recipeID)
     if current_user != editrecipe.author:
         flash("You can't edit a recipe you don't own.")
         return redirect(url_for('recipe',recipeID=recipeID))
@@ -67,8 +84,9 @@ def recipeEdit(recipeID):
     if form.validate_on_submit():
         editrecipe.update(
             name = form.name.data,
-            genre = form.name.data,
+            genre = form.genre.data,
             recauthor = form.recauthor.data,
+            author = current_user.id,
             recimage = form.recimage.data,
             summary = form.summary.data,
             ingredients = form.ingredients.data,
@@ -80,12 +98,17 @@ def recipeEdit(recipeID):
     
         return redirect(url_for('recipe',recipeID=recipeID))
 
-    form.subject.data = editrecipe.subject
-    form.content.data = editrecipe.content
-    form.tag.data = editrecipe.tag
 
+    form.name.data = editrecipe.name
+    form.genre.data = editrecipe.genre
+    form.recauthor.data = editrecipe.recauthor
+    form.recimage.data = editrecipe.recimage
+    form.summary.data = editrecipe.summary
+    form.ingredients.data = editrecipe.ingredients
+    form.time.data = editrecipe.time
+    form.recrecipe.data = editrecipe.recrecipe
+    form.tags.data = editrecipe.tags
 
-  
     return render_template('recipeform.html',form=form)
 
 
