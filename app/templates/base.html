@@ -25,6 +25,7 @@ like the navbar. -->
     {% include 'includes/_navbar.html' %}
       <!-- Flask has a messages feature called "Flash" where you can pass messages to the template from the code.  This is where 
         those messages are displayed -->
+<!--
       {% with messages = get_flashed_messages() %}
         {% if messages %}
         <div class="container-fluid">
@@ -38,7 +39,7 @@ like the navbar. -->
           </div>
         {% endif %}
       {% endwith %}
-
+        -->
   <!--This is where each of the templates are embedded in to this template -->
   <div>
       {% block body %}

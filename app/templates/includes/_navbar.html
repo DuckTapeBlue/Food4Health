@@ -19,14 +19,23 @@
       {% else %}
       <li class="nav-item">
         <a class="nav-link" href="/myprofile">
-          <div class="container">
+        
           {{ current_user.gname }} 
-        </div>
+        
         </a>
-      <a class="button" href="{{ url_for('logout') }}">Logout</a>
+      <a class="button fred" href="{{ url_for('logout') }}">Logout</a>
       {% endif %}
     </nav>
     
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="container-fluid">
+        {% for message in messages %}
+       <p class="messages sb1"> {{ message }} </p>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
 
     <div class="content">
       <h4>Place Holder</h4>

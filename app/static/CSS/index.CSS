@@ -41,10 +41,18 @@ nav ul li a{
 }
 
 .nav-link{
-color:white;
-text-decoration: none;
-padding: 14px 28px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: capitalize;
+    position: absolute;
+    right: 180px;
+    top: 58px;
 
+}
+.nav-link:hover{
+    color: #C73872;
+    transition: .4s;
 }
 nav ul li a:hover{
     color: #C73872;
@@ -123,6 +131,46 @@ h4{
     justify-content: space-around;
 }
 
+fluid-container p{
+    color: white;
+
+}
+
+.messages{
+    color: white;
+    position: absolute;
+    right: 50px;
+
+    width: 300px;
+    margin: 50px auto;
+    background: salmon;
+    padding: 15px;
+    text-align: center;
+    font-weight: 900;
+    color: #fff;
+    font-family: arial;
+    border-radius: 25px;
+}
+
+.fred{
+position: absolute;
+right: 50px;
+top: 40px;
+}
+.sb1:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 10px solid salmon;
+    border-right: 10px solid transparent;
+    border-top: 10px solid salmon;
+    border-bottom: 10px solid transparent;
+    right: 150px;
+    top: -8px;
+    transform: rotate(45deg);
+
+  }
 .about h2{
     color: white;
     font-size: 75px;

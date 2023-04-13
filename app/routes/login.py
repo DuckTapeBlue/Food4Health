@@ -26,7 +26,7 @@ client = WebApplicationClient(secrets['GOOGLE_CLIENT_ID'])
 @login_manager.unauthorized_handler
 def unauthorized():
     flash("You must be logged in to access that content.")
-    return redirect(url_for('index'))
+    return redirect(url_for('home'))
 
 # Flask-Login helper to retrieve a user object from our db
 # https://flask-login.readthedocs.io/en/latest/#flask_login.LoginManager.user_loader
@@ -36,7 +36,7 @@ def load_user(id):
         return User.objects.get(pk=id)
     except mongoengine.errors.DoesNotExist:
         flash("Something strange has happened. This user doesn't exist. Please click logout.")
-        return redirect(url_for('index'))
+        return redirect(url_for('home'))
 
 def get_google_provider_cfg():
     return requests.get(secrets['GOOGLE_DISCOVERY_URL']).json()
@@ -139,8 +139,8 @@ def callback():
             thisUser.save()
             thisUser.reload()
         else:
-            flash("You must have an ousd.org email to login to this site.")
-            return redirect(url_for('index'))
+            flash("You must be logged in to use this feature")
+            return redirect(url_for('home'))
     else:
         thisUser.update(
             gid=gid, 
